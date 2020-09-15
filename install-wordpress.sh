@@ -32,6 +32,7 @@ if [ -z $dst ]; then
     echo -e "--db_password \t\tSet database password (default: 1234qwer)"
     echo -e "--wp_version \t\tSet Wordpress version to install (default: latest)"
     echo -e "--docker_data_folder \tSet Docker Data folder (default: ~/docker-data)"
+    echo -e "--with_woocommerce \tInstall WooCommerce"
     exit 1
 fi
 
@@ -83,5 +84,6 @@ docker exec wordpress_php wp config create --dbname=$DB_NAME --dbuser=root --dbp
 echo -e "\nInstalling wordpress"
 docker exec wordpress_php wp core install --url=wordpress.local --title=Example --admin_user=admin --admin_password=1234qwer --admin_email=info@example.com --admin_password=$DB_PASSWORD
 
-#echo -e "\nInstalling woocommerce"
-#docker exec wordpress_php wp plugin install woocommerce --activate
+
+# echo -e "\nInstalling woocommerce"
+# docker exec wordpress_php wp plugin install woocommerce --activate
